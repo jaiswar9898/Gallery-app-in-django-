@@ -1,0 +1,38 @@
+
+
+{% block title %}
+<title>home page</title>
+{% endblock title %}
+{% block body %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Message</strong> {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% load static %}
+<div class="container my-3">
+      <strong class="d-inline-block mb-2 text-primary">Welcome to image gallery</strong>
+ <div class="row mb-2 my-3 mx-1">
+ {% for blog in blogs %}
+        
+          <h3 class="mb-0">{{blog.title}}</h3>
+          <div class="mb-1 text-muted">{{blog.date}}</div>
+          <b>Posted by:-> {{blog.user_id.username}}</b><br>
+          <a href="blog_detail/{{blog.id}}" class="stretched-link btn btn-success">View Image</a><br>
+          
+           
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="{{blog.Img.url}}" width="200" height="250" style="margin-top: 20px; margin-bottom: 20px;"/>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock body %}
